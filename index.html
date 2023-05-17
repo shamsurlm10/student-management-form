@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/000/350/111/small/Education__28193_29.jpg"
+                alt="" style="height:60px">
+            <h1>Student Management System</h1>
+            <p>Enter your all the informations below</p>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <form id="student-form">
+            <div class="row" style="padding: 10px;">
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <div class="form-group">
+                            <label for="user">Name:</label>
+                            <input type="text" class="form-control" id="user" placeholder="Enter Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" class="form-control" id="address" placeholder="Address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <input type="text" class="form-control" id="city" placeholder="City">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <input type="text" class="form-control" id="country" placeholder="Country">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent">Parent/Guardian Name:</label>
+                            <input type="text" class="form-control" id="parent"
+                                placeholder="Enter Parent/Guardian Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Student Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sid">Student ID:</label>
+                            <input type="number" class="form-control" id="sid" placeholder="Student ID">
+                        </div>
+                    </div>
+                    <p>All rights reserved 2023</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <div class="form-group">
+                            <label for="bdate">Date of Birth:</label>
+                            <input type="date" class="form-control" id="bdate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endate">Date of Enrollment:</label>
+                            <input type="date" class="form-control" id="endate">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" style="margin-bottom: 0;">Select Gender</label>
+                            <div class="radio">
+                                <label><input type="radio" name="gender" id="gender" value="Male">Male</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="gender" id="gender" value="Female">Female</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="gender" id="gender" value="Other">Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="marital" style="margin-bottom: 0;">Marital Status</label>
+                            <div class="radio">
+                                <label><input type="radio" name="marital" id="marital" value="Married">Married</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="marital" id="marital"
+                                        value="Unmaried">Unmarried</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label for="program">Course/Program selection</label>
+                            <select id="program" name="program" required>
+                                <option value="">Select an option</option>
+                                <option value="Under-graduation">Under-graduation</option>
+                                <option value="Post-graduation">Post-graduation</option>
+                                <option value="Reasearch Assistant">Reasearch Assistant</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="major">Major selection</label>
+                            <select id="major" name="major" required>
+                                <option value="">Select an option</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electrical and Electronics Enginnering">Electrical and Electronics
+                                    Enginnering</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="margin-top: 10px;" for="ec">Extra-curriculum Activity</label> <br>
+                            <label class="checkbox-inline"><input type="checkbox" value="sports"
+                                    id="sports">Sports</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="art" id="art">Art</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="entertaiment"
+                                    id="enter">Entertaiment</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea class="form-control" id="comment" rows="3" style="height: 48px;"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+                </div>
+        </form>
+    </div>
+    <script src="index.js"></script>
+    <footer style="margin-top: 10px;">
+        <div class="container">
+            <h5>Created By</h5>
+            Md Shamsur Rahman
+        </div>
+        </div>
+    </footer>
+</body>
+
+</html>
