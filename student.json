@@ -1,0 +1,46 @@
+{
+    "data": [
+        {
+            "name": "Md Shamsur Rahman",
+            "address": "Demra",
+            "city": "Dhaka",
+            "country": "Bangladesh",
+            "parent": "Shahidur Rahman",
+            "phone": "01872228989",
+            "email": "shamur.works@gmail.com",
+            "sid": "201",
+            "birthDate": "1999-12-31",
+            "enrollDate": "2023-05-15",
+            "gender": "Male",
+            "marital": "Married",
+            "program": "Under-graduation",
+            "major": "Computer Science",
+            "extraCurriculum": [
+                "sports",
+                "entertaiment"
+            ],
+            "comment": "I am holding my dreams"
+        },
+        {
+            "name": "Md Shamsur Rahman",
+            "address": "Demra",
+            "city": "Dhaka",
+            "country": "Bangladesh",
+            "parent": "Shahidur Rahman",
+            "phone": "01872228989",
+            "email": "shamur.works@gmail.com",
+            "sid": "201",
+            "birthDate": "1999-12-31",
+            "enrollDate": "2023-05-15",
+            "gender": "Male",
+            "marital": "Married",
+            "program": "Under-graduation",
+            "major": "Computer Science",
+            "extraCurriculum": [
+                "sports",
+                "entertaiment"
+            ],
+            "comment": "I am holding my dreams"
+        }
+    ]
+}

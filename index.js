@@ -1,4 +1,4 @@
-document.getElementById("student-form").addEventListener("submit", function(event) {
+document.getElementById("student-form").addEventListener("submit", function (event) {
     event.preventDefault();
     var name = document.getElementById("user").value;
     var address = document.getElementById("address").value;
@@ -10,19 +10,43 @@ document.getElementById("student-form").addEventListener("submit", function(even
     var sid = document.getElementById("sid").value;
     var birthDate = document.getElementById("bdate").value;
     var enrollDate = document.getElementById("endate").value;
-    var gender = document.getElementById("gender").value;
-    var marital = document.getElementById("marital").value;
+
+    var maleRadio = document.getElementById("maleRadio");
+    var femaleRadio = document.getElementById("femaleRadio");
+    var otherRadio = document.getElementById("otherRadio");
+
+    var selectedGender = "";
+
+    if (maleRadio.checked) {
+        selectedGender = maleRadio.value;
+    } else if (femaleRadio.checked) {
+        selectedGender = femaleRadio.value;
+    } else if (otherRadio.checked) {
+        selectedGender = otherRadio.value;
+    }
+
+    var marriedRadio = document.getElementById("marriedRadio");
+    var unmarriedRadio = document.getElementById("unmarriedRadio");
+
+    var selectedMarital = "";
+
+    if (marriedRadio.checked) {
+        selectedMarital = marriedRadio.value;
+    } else if (unmarriedRadio.checked) {
+        selectedMarital = unmarriedRadio.value;
+    }
+
     var program = document.getElementById("program").value;
     var major = document.getElementById("major").value;
-    
+
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var extraCurriculum = [];
 
     for (var i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-        extraCurriculum.push(checkboxes[i].value);
+        if (checkboxes[i].checked) {
+            extraCurriculum.push(checkboxes[i].value);
+        }
     }
-}
 
     var comment = document.getElementById("comment").value;
 
@@ -30,11 +54,11 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Name field.");
         return;
     }
-    function isValid(name){
+    function isValid(name) {
         var nameex = /^[a-zA-Z.\s]+$/;
         return nameex.test(name);
     }
-    if (!isValid(name)){
+    if (!isValid(name)) {
         alert("Name field can only contain alphabetic characters and a dot (.)");
         return;
     }
@@ -47,11 +71,11 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the City field.");
         return;
     }
-    if (!isValid2(city)){
+    if (!isValid2(city)) {
         alert("City field can only contain alphabetic characters and a dot (.)");
         return;
     }
-    function isValid2(name){
+    function isValid2(name) {
         var nameex = /^[a-zA-Z\s]+$/;
         return nameex.test(name);
     }
@@ -59,11 +83,11 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Country field.");
         return;
     }
-    if (!isValid2(country)){
+    if (!isValid2(country)) {
         alert("country field can only contain alphabetic characters and a dot (.)");
         return;
     }
-    function isValid2(name){
+    function isValid2(name) {
         var nameex = /^[a-zA-Z\s]+$/;
         return nameex.test(name);
     }
@@ -71,7 +95,7 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Parent field.");
         return;
     }
-    if (!isValid(parent)){
+    if (!isValid(parent)) {
         alert("Parent field can only contain alphabetic characters and a dot (.)");
         return;
     }
@@ -79,18 +103,18 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Phone field.");
         return;
     }
-    function isValidPhone(phone){
-        if(phone.length===14 || phone.length===11){
+    function isValidPhone(phone) {
+        if (phone.length === 14 || phone.length === 11) {
             return true;
         }
-        else if(/^[0-9+]+$/.test(phone)){
+        else if (/^[0-9+]+$/.test(phone)) {
             return true;
         }
     }
     if (!isValidPhone(phone)) {
         alert("Phone number should contain charecter between 0-9 a plus (+)");
         return;
-    }   
+    }
     if (email === "") {
         alert("Please fill in the Email field.");
         return;
@@ -103,8 +127,8 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Sid should contain charecter between 0-9");
         return;
     }
-    function isValidsid(sid){
-        if(/^[0-9]+$/.test(sid)){
+    function isValidsid(sid) {
+        if (/^[0-9]+$/.test(sid)) {
             return true;
         }
     }
@@ -116,12 +140,13 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Enrollment Date field.");
         return;
     }
-    if (gender === "") {
-        alert("Please fill in the Gender field.");
-        return;
+    
+    if (selectedGender === "") {
+        alert("Please select a gender");
+        return
     }
-    if (marital === "") {
-        alert("Please fill in the Marital Status field.");
+    if (selectedMarital === "") {
+        alert("Please select a maretial stuatus");
         return;
     }
     if (program === "") {
@@ -132,69 +157,50 @@ document.getElementById("student-form").addEventListener("submit", function(even
         alert("Please fill in the Major field.");
         return;
     }
-    if (extraCurriculum === "") {
+    if (extraCurriculum.length === 0) {
         alert("Please fill in the Extra Curriculum field.");
         return;
     }
-    if (extraCurriculum === "") {
+    if (comment === "") {
         alert("Please fill in the Comment field.");
         return;
     }
     var student = {
         name: name,
         address: address,
-        city: city,
-        country: country,
-        parent: parent,
         phone: phone,
         email: email,
         sid: sid,
-        birthDate: birthDate,
         enrollDate: enrollDate,
-        gender: gender,
-        marital: marital,
+        selectedGender: selectedGender,
         program: program,
         major: major,
-        extraCurriculum: extraCurriculum,
-        comment: comment
-      };
+    };
 
-      console.log(student)
+    document.getElementById("user").value="";
+    document.getElementById("address").value="";
+    document.getElementById("city").value="";
+    document.getElementById("country").value="";
+    document.getElementById("parent").value="";
+    document.getElementById("phone").value="";
+    document.getElementById("email").value="";
+    document.getElementById("sid").value="";
+    document.getElementById("bdate").value="";
+    document.getElementById("endate").value="";
+    document.getElementById("maleRadio").checked=false;
+    document.getElementById("femaleRadio").checked=false;
+    document.getElementById("otherRadio").checked=false;
+    document.getElementById("marriedRadio").checked=false;
+    document.getElementById("unmarriedRadio").checked=false;
+    document.getElementById("program").value="";
+    document.getElementById("major").value="";
+    document.getElementById("comment").value="";
+    document.querySelectorAll('input[type="checkbox"]').checked=false;
 
-      saveStudentData(student);
 
-    //   document.getElementById("user").value="";
-    //   document.getElementById("address").value="";
-    //   document.getElementById("city").value="";
-    //   document.getElementById("country").value="";
-    //   document.getElementById("parent").value="";
-    //   document.getElementById("phone").value="";
-    //   document.getElementById("email").value="";
-    //   document.getElementById("sid").value="";
-    //   document.getElementById("bdate").value="";
-    //   document.getElementById("endate").value="";
-    //   document.getElementById("gender").checked=false;
-    //   document.getElementById("marital").checked=false;
-    //   document.getElementById("program").value="";
-    //   document.getElementById("major").value="";
-    //   document.getElementById("comment").value="";
-    //   document.querySelectorAll('input[type="checkbox"]').checked=false;
-    
-      function saveStudentData(student) {
-        // Convert student object to JSON string
+    function saveStudentData(student) {
         var jsonData = JSON.stringify(student);
-
-        console.log(jsonData)
-        console.log(student)
-      
-        // // Create a new Blob object with the JSON data
-        // var blob = new Blob([jsonData], { type: "application/json" });
-      
-        // // Create a temporary anchor element to trigger the download
-        // var a = document.createElement("a");
-        // a.href = URL.createObjectURL(blob);
-        // a.download = "student.json";
-        // a.click();
-      }
- 
+        localStorage.setItem("studentData", jsonData);
+    }
+    saveStudentData(student);
 });

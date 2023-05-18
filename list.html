@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="list.css">
+</head>
+
+<body>
+    <nav class="navbar nav-custom">
+        <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="list.html">Students Info</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="margin-top: 10px;">
+        <input type="text" class="form-control" id="search" onkeyup="searchFunction()" placeholder="Search"
+            style="width: 300px">
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="thumbnail" style="margin-top: 10px;">
+            <h1>Student Table</h1>
+            <table id="student-table">
+                <thead id="student-table-head">
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Id</th>
+                        <th>Enrollment Date</th>
+                        <th>Program</th>
+                        <th>Major</th>
+                        <th>Extra Curriculum</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="list.js">
+    </script>
+    <footer style="margin-top: 10px;">
+        <div class="container">
+            <h5>Created By</h5>
+            Md Shamsur Rahman
+        </div>
+        </div>
+    </footer>
+</body>
+
+</html>
