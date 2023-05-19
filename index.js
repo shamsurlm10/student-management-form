@@ -140,7 +140,7 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         alert("Please fill in the Enrollment Date field.");
         return;
     }
-    
+
     if (selectedGender === "") {
         alert("Please select a gender");
         return
@@ -177,30 +177,37 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         major: major,
     };
 
-    document.getElementById("user").value="";
-    document.getElementById("address").value="";
-    document.getElementById("city").value="";
-    document.getElementById("country").value="";
-    document.getElementById("parent").value="";
-    document.getElementById("phone").value="";
-    document.getElementById("email").value="";
-    document.getElementById("sid").value="";
-    document.getElementById("bdate").value="";
-    document.getElementById("endate").value="";
-    document.getElementById("maleRadio").checked=false;
-    document.getElementById("femaleRadio").checked=false;
-    document.getElementById("otherRadio").checked=false;
-    document.getElementById("marriedRadio").checked=false;
-    document.getElementById("unmarriedRadio").checked=false;
-    document.getElementById("program").value="";
-    document.getElementById("major").value="";
-    document.getElementById("comment").value="";
-    document.querySelectorAll('input[type="checkbox"]').checked=false;
+    document.getElementById("user").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("city").value = "";
+    document.getElementById("country").value = "";
+    document.getElementById("parent").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("sid").value = "";
+    document.getElementById("bdate").value = "";
+    document.getElementById("endate").value = "";
+    document.getElementById("maleRadio").checked = false;
+    document.getElementById("femaleRadio").checked = false;
+    document.getElementById("otherRadio").checked = false;
+    document.getElementById("marriedRadio").checked = false;
+    document.getElementById("unmarriedRadio").checked = false;
+    document.getElementById("program").value = "";
+    document.getElementById("major").value = "";
+    document.getElementById("comment").value = "";
+    document.querySelectorAll('input[type="checkbox"]').checked = false;
 
+
+    var studentData = localStorage.getItem("studentData");
+    if (!studentData) {
+        studentData = [];
+    } else {
+        studentData = JSON.parse(studentData);
+    }
 
     function saveStudentData(student) {
-        var jsonData = JSON.stringify(student);
-        localStorage.setItem("studentData", jsonData);
+        studentData.push(student);
+        localStorage.setItem("studentData", JSON.stringify(studentData));
     }
     saveStudentData(student);
 });
