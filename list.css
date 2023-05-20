@@ -1,3 +1,13 @@
+.flex-container {
+  display: flex;
+}
+
+
+.flex-child:first-child {
+  margin-right: 5px;
+} 
+
+
 table {
     border-collapse: collapse;
   }

@@ -31,8 +31,8 @@ ul li a{
 
 
 .jumbotron{
-    background-color: rgb(1, 30, 49);
-    color: white;
+    background-color: rgb(233, 233, 233);
+    margin-top: 1px;
 }
 .search{
     width: 600px;

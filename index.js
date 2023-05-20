@@ -204,7 +204,6 @@ document.getElementById("student-form").addEventListener("submit", function (eve
     } else {
         studentData = JSON.parse(studentData);
     }
-
     function saveStudentData(student) {
         studentData.push(student);
         localStorage.setItem("studentData", JSON.stringify(studentData));
