@@ -175,6 +175,7 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         selectedGender: selectedGender,
         program: program,
         major: major,
+        extraCurriculum: extraCurriculum
     };
 
     document.getElementById("user").value = "";
@@ -197,7 +198,6 @@ document.getElementById("student-form").addEventListener("submit", function (eve
     document.getElementById("comment").value = "";
     document.querySelectorAll('input[type="checkbox"]').checked = false;
 
-
     var studentData = localStorage.getItem("studentData");
     if (!studentData) {
         studentData = [];
@@ -209,4 +209,6 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         localStorage.setItem("studentData", JSON.stringify(studentData));
     }
     saveStudentData(student);
+
+    alert("Form submitted successfully!");
 });
