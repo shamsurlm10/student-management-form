@@ -55,8 +55,8 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         return;
     }
     function isValid(name) {
-        var nameex = /^[a-zA-Z.\s]+$/;
-        return nameex.test(name);
+        var nameEx = /^[a-zA-Z.\s]+$/;
+        return nameEx.test(name);
     }
     if (!isValid(name)) {
         alert("Name field can only contain alphabetic characters and a dot (.)");
@@ -76,8 +76,8 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         return;
     }
     function isValid2(name) {
-        var nameex = /^[a-zA-Z\s]+$/;
-        return nameex.test(name);
+        var nameEx = /^[a-zA-Z\s]+$/;
+        return nameEx.test(name);
     }
     if (country === "") {
         alert("Please fill in the Country field.");
@@ -88,15 +88,15 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         return;
     }
     function isValid2(name) {
-        var nameex = /^[a-zA-Z\s]+$/;
-        return nameex.test(name);
+        var nameEx = /^[a-zA-Z\s]+$/;
+        return nameEx.test(name);
     }
     if (parent === "") {
         alert("Please fill in the Parent field.");
         return;
     }
     if (!isValid(parent)) {
-        alert("Parent field can only contain alphabetic characters and a dot (.)");
+        alert("Parent field can only contain alphabetic character and a dot (.)");
         return;
     }
     if (phone === "") {
@@ -112,7 +112,7 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         }
     }
     if (!isValidPhone(phone)) {
-        alert("Phone number should contain charecter between 0-9 a plus (+)");
+        alert("Phone number should contain character between 0-9 a plus (+)");
         return;
     }
     if (email === "") {
@@ -123,11 +123,11 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         alert("Please fill in the SID field.");
         return;
     }
-    if (!isValidsid(sid)) {
-        alert("Sid should contain charecter between 0-9");
+    if (!isValidSid(sid)) {
+        alert("Sid should contain character between 0-9");
         return;
     }
-    function isValidsid(sid) {
+    function isValidSid(sid) {
         if (/^[0-9]+$/.test(sid)) {
             return true;
         }
@@ -146,7 +146,7 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         return
     }
     if (selectedMarital === "") {
-        alert("Please select a maretial stuatus");
+        alert("Please select a marital status");
         return;
     }
     if (program === "") {
@@ -168,14 +168,20 @@ document.getElementById("student-form").addEventListener("submit", function (eve
     var student = {
         name: name,
         address: address,
+        city: city,
+        country: country,
+        parent:parent,
         phone: phone,
         email: email,
         sid: sid,
+        birthDate: birthDate,
         enrollDate: enrollDate,
         selectedGender: selectedGender,
+        selectedMarital: selectedMarital,
         program: program,
         major: major,
-        extraCurriculum: extraCurriculum
+        extraCurriculum: extraCurriculum,
+        comment: comment
     };
 
     document.getElementById("user").value = "";
