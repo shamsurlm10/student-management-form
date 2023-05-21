@@ -170,7 +170,7 @@ document.getElementById("student-form").addEventListener("submit", function (eve
         address: address,
         city: city,
         country: country,
-        parent:parent,
+        parent: parent,
         phone: phone,
         email: email,
         sid: sid,
@@ -202,7 +202,11 @@ document.getElementById("student-form").addEventListener("submit", function (eve
     document.getElementById("program").value = "";
     document.getElementById("major").value = "";
     document.getElementById("comment").value = "";
-    document.querySelectorAll('input[type="checkbox"]').checked = false;
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(function (checkbox) {
+        checkbox.checked = false;
+    });
 
     var studentData = localStorage.getItem("studentData");
     if (!studentData) {
