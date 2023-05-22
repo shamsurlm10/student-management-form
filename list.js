@@ -4,6 +4,9 @@ var data = JSON.parse(localStorage.getItem("studentData"));
 var tableBody = document.getElementById("student-table-body");
 var tableSearchBody = document.getElementById("student-table-search-body");
 
+// Call the initialization function when the page loads
+window.onload = initializeStudentTable;
+
 for (var i = 0; i < data.length; i++) {
     var student = data[i];
     var row = document.createElement("tr");
@@ -136,6 +139,121 @@ for (var i = 0; i < data.length; i++) {
             }
 
             var comment = document.getElementById("comment").value;
+            if (name === "") {
+                alert("Please fill in the Name field.");
+                return;
+            }
+            function isValid(name) {
+                var nameEx = /^[a-zA-Z.\s]+$/;
+                return nameEx.test(name);
+            }
+            if (!isValid(name)) {
+                alert("Name field can only contain alphabetic characters and a dot (.)");
+                return;
+            }
+
+            if (address === "") {
+                alert("Please fill in the Address field.");
+                return;
+            }
+            if (city === "") {
+                alert("Please fill in the City field.");
+                return;
+            }
+            if (!isValid2(city)) {
+                alert("City field can only contain alphabetic characters and a dot (.)");
+                return;
+            }
+            function isValid2(name) {
+                var nameEx = /^[a-zA-Z\s]+$/;
+                return nameEx.test(name);
+            }
+            if (country === "") {
+                alert("Please fill in the Country field.");
+                return;
+            }
+            if (!isValid2(country)) {
+                alert("country field can only contain alphabetic characters and a dot (.)");
+                return;
+            }
+            function isValid2(name) {
+                var nameEx = /^[a-zA-Z\s]+$/;
+                return nameEx.test(name);
+            }
+            if (parent === "") {
+                alert("Please fill in the Parent field.");
+                return;
+            }
+            if (!isValid(parent)) {
+                alert("Parent field can only contain alphabetic character and a dot (.)");
+                return;
+            }
+            if (phone === "") {
+                alert("Please fill in the Phone field.");
+                return;
+            }
+            function isValidPhone(phone) {
+                if (phone.length === 14 || phone.length === 11) {
+                    return true;
+                }
+                else if (/^[0-9+]+$/.test(phone)) {
+                    return true;
+                }
+            }
+            if (!isValidPhone(phone)) {
+                alert("Phone number should contain character between 0-9 a plus (+)");
+                return;
+            }
+            if (email === "") {
+                alert("Please fill in the Email field.");
+                return;
+            }
+            if (sid === "") {
+                alert("Please fill in the SID field.");
+                return;
+            }
+            if (!isValidSid(sid)) {
+                alert("Sid should contain character between 0-9");
+                return;
+            }
+            function isValidSid(sid) {
+                if (/^[0-9]+$/.test(sid)) {
+                    return true;
+                }
+            }
+            if (birthDate === "") {
+                alert("Please fill in the Birth Date field.");
+                return;
+            }
+            if (enrollDate === "") {
+                alert("Please fill in the Enrollment Date field.");
+                return;
+            }
+
+            if (selectedGender === "") {
+                alert("Please select a gender");
+                return
+            }
+            if (selectedMarital === "") {
+                alert("Please select a marital status");
+                return;
+            }
+            if (program === "") {
+                alert("Please fill in the Program field.");
+                return;
+            }
+            if (major === "") {
+                alert("Please fill in the Major field.");
+                return;
+            }
+            if (extraCurriculum.length === 0) {
+                alert("Please fill in the Extra Curriculum field.");
+                return;
+            }
+            if (comment === "") {
+                alert("Please fill in the Comment field.");
+                return;
+            }
             var student = {
                 name: name,
                 address: address,
@@ -154,8 +272,6 @@ for (var i = 0; i < data.length; i++) {
                 extraCurriculum: extraCurriculum,
                 comment: comment
             };
-            // data.splice(rowIndex, 1);
-            // data.splice(rowIndex, 1, student);
             var studentData = localStorage.getItem("studentData");
             if (!studentData) {
                 studentData = [];
@@ -198,24 +314,8 @@ for (var i = 0; i < data.length; i++) {
 
 
 function searchFunction() {
-    // $("#student-table-body").remove();
-    // input = document.getElementById("search");
-    // filter = input.value;
-    // var studentDataAlt = [];
-    // for (var i = 0; i < data.length; i++) {
-    //     var student = data[i];
-    //     for (var key in student) {
-    //         if (student.hasOwnProperty(key) && student[key].includes(filter)) {
-    //             JSON.stringify(studentDataAlt.push(student));
-    //         }
-    //     }
-    // }
-    // console.log(studentDataAlt)
-
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("search");
-    // sid = document.getElementById("sid");
-    // sidFilter = sid.value;
     filter = input.value.toUpperCase();
     table = document.getElementById("student-table");
     tr = table.getElementsByTagName("tr");
@@ -338,3 +438,98 @@ function searchFunction() {
         }
     }
 }
+
+var rowsPerPage = 4;
+var currentPage = 1;
+
+// Function to display the rows for the current page
+function displayRowsForPage(pageNumber, rows) {
+    var startIndex = (pageNumber - 1) * rowsPerPage;
+    var endIndex = startIndex + rowsPerPage;
+
+    var rowsToDisplay = rows.slice(startIndex, endIndex);
+    tableBody.innerHTML = '';
+
+    // Add the rows to the table body
+    rowsToDisplay.forEach(function (row) {
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to generate the pagination buttons
+function generatePaginationButtons(rows) {
+    var totalPages = Math.ceil(rows.length / rowsPerPage);
+    var paginationContainer = document.getElementById('pagination-container');
+    paginationContainer.innerHTML = '';
+
+    for (var i = 1; i <= totalPages; i++) {
+        var button = document.createElement('button');
+        button.innerHTML = i;
+        button.addEventListener('click', function (event) {
+            var pageNumber = parseInt(event.target.innerHTML);
+            currentPage = pageNumber;
+            displayRowsForPage(currentPage, rows);
+        });
+        paginationContainer.appendChild(button);
+    }
+}
+
+// Function to initialize the student table and pagination
+function initializeStudentTable() {
+    var rows = Array.from(document.getElementById('student-table-body').getElementsByTagName('tr'));
+    generatePaginationButtons(rows);
+    displayRowsForPage(currentPage, rows);
+}
+
+
+// Show and Hide Advance Search
+function showSearchDiv() {
+    document.getElementById('searchDiv').style.display = "block";
+    document.getElementById('showButton').style.display = "none";
+}
+
+function closeSearchDiv() {
+    document.getElementById('searchDiv').style.display = "none";
+    document.getElementById('showButton').style.display = "block";
+}
+
+document.getElementById("advanceSearch").addEventListener('click', function () {
+    majorSearch = document.getElementById("searchMajor");
+    searchfilter = majorSearch.value;
+
+    var maleRadio = document.getElementById("maleRadio");
+    var femaleRadio = document.getElementById("femaleRadio");
+    var otherRadio = document.getElementById("otherRadio");
+
+    var selectedGenderFilter = "";
+
+    if (maleRadio.checked) {
+        selectedGenderFilter = maleRadio.value;
+    } else if (femaleRadio.checked) {
+        selectedGenderFilter = femaleRadio.value;
+    } else if (otherRadio.checked) {
+        selectedGenderFilter = otherRadio.value;
+    }
+
+    searchId = document.getElementById("searchId");
+    searchIdFilter = searchId.value;
+
+    table = document.getElementById("student-table");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[8];
+        td0 = tr[i].getElementsByTagName("td")[6];
+        td1 = tr[i].getElementsByTagName("td")[4];
+
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            txtValue0 = td0.textContent || td0.innerText
+            txtValue1 = td1.textContent || td1.innerText
+            if (txtValue.indexOf(searchfilter) > -1 && txtValue0.indexOf(selectedGenderFilter) > -1 && txtValue1.indexOf(searchIdFilter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+});

@@ -27,7 +27,7 @@
 
     <div class="container flex-container" style="margin-top: 10px;">
         <div class="form-group flex-child">
-            <select id="filter" name="filter" style="height: 33px;">
+            <select id="filter" name="filter" style="height: 33px; width: 130px;">
                 <option value="name">Search by Name</option>
                 <option value="address">Search by Address</option>
                 <option value="phone">Search by Phone</option>
@@ -39,16 +39,37 @@
                 <option value="extraCurry">Search by Extra-curriculum</option>
             </select>
         </div>
-        <!-- <div class="form-group flex-child" style="margin-right: 5px;">
-            <select id="major" name="major">
-                <option value="">Select an option</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Electrical and Electronics Enginnering">Electrical and Electronics
-                    Enginnering</option>
-            </select>
-        </div> -->
         <input type="text" class="form-control flex-child" id="search" onkeyup="searchFunction()" placeholder="Search"
-            style="width: 300px">
+            style="width: 150px">
+        <div class="form-group flex-child">
+            <div id="searchDiv" style="display:none;">
+                <div class="flex-container">
+                    <div class="form-group flex-child" style="margin-left: 5px;">
+                        <button class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" onclick="closeSearchDiv()">Close Advanced Search</button>
+                        <select id="searchMajor" name="searchMajor" style="height: 33px; width: 130px;">
+                            <option value="">Search By major</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Electrical and Electronics Engineering">Electrical and Electronics
+                                Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group flex-child" style="margin-right: 10px; margin-top: 5px;">
+                        <label><input type="radio" name="gender" id="maleRadio" value="Male" style="margin-left: 5px;">Male</label>
+                        <label><input type="radio" name="gender" id="femaleRadio" value="Female" style="margin-left: 5px;">Female</label>
+                        <label><input type="radio" name="gender" id="otherRadio" value="Other" style="margin-left: 5px;">Other</label>
+                </div>  
+
+                    <div class="form-group flex-child">
+                        <input type="number" class="form-control" id="searchId" style="width: 133px;"placeholder="Search By ID">
+                    </div>
+
+
+                    <button type="advanceSearch" class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" id="advanceSearch">Search</button>
+                </div>
+            </div>
+            <input type="button" id="showButton" name="searchDiv" value="Advanced Search" style="margin-left: 5px; height: 33px; " onclick="showSearchDiv()" />
+        </div>
     </div>
 
     <div class="container">
@@ -73,8 +94,8 @@
             <tbody id="student-table-body">
             </tbody>
         </table>
-        <!-- <div class="pagination" id="pagination-container">
-            </div> -->
+        <div id="pagination-container" class="pagination">
+        </div>
         <div id="confirmationModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
