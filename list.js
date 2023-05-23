@@ -1,3 +1,6 @@
+var token = localStorage.getItem('jwt');
+
+if (token) {
 var data = JSON.parse(localStorage.getItem("studentData"));
 
 
@@ -5,7 +8,7 @@ var tableBody = document.getElementById("student-table-body");
 var tableSearchBody = document.getElementById("student-table-search-body");
 
 // Call the initialization function when the page loads
-window.onload = initializeStudentTable;
+// window.onload = initializeStudentTable;
 
 for (var i = 0; i < data.length; i++) {
     var student = data[i];
@@ -51,8 +54,18 @@ for (var i = 0; i < data.length; i++) {
         var program = document.getElementById("program");
         var major = document.getElementById("major");
 
-        // var extraCurry = data[rowIndex].extraCurriculum;
-        // console.log(extraCurry)
+        var extraCurry = data[rowIndex].extraCurriculum;
+        for(var i=0; i<extraCurry.length; i++){
+            if(document.getElementById("sports").value===extraCurry[i]){
+                document.getElementById("sports").checked = true;
+            }
+            if(document.getElementById("art").value===extraCurry[i]){
+                document.getElementById("art").checked = true;
+            }
+            if(document.getElementById("enter").value===extraCurry[i]){
+                document.getElementById("enter").checked = true;
+            }
+        }
         var comment = document.getElementById("comment");
 
         name.value = data[rowIndex].name;
@@ -68,7 +81,6 @@ for (var i = 0; i < data.length; i++) {
         program.value = data[rowIndex].program;
         major.value = data[rowIndex].major;
         comment.value = data[rowIndex].comment;
-
 
         if (gender === "Male") {
             maleRadio.checked = true;
@@ -86,7 +98,9 @@ for (var i = 0; i < data.length; i++) {
         else if (marital === "Unmarried") {
             unmarriedRadio.checked = true;
         }
+        // if(extraCurry.length){
 
+        // }
         $('#updateModal').modal('show');
         var updateConfirmButton = document.getElementById('updateConfirmButton');
         updateConfirmButton.addEventListener("click", function () {
@@ -114,7 +128,7 @@ for (var i = 0; i < data.length; i++) {
             } else if (otherRadio.checked) {
                 selectedGender = otherRadio.value;
             }
-
+            
             var marriedRadio = document.getElementById("marriedRadio");
             var unmarriedRadio = document.getElementById("unmarriedRadio");
 
@@ -304,6 +318,7 @@ for (var i = 0; i < data.length; i++) {
             data.splice(rowIndex, 1);
             localStorage.setItem("studentData", JSON.stringify(data));
             row.parentNode.removeChild(row);
+            window.location.reload();
             $('#confirmationModal').modal('hide');
         });
     });
@@ -313,193 +328,196 @@ for (var i = 0; i < data.length; i++) {
 }
 
 
-function searchFunction() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("student-table");
-    tr = table.getElementsByTagName("tr");
-    if (document.getElementById("filter").value === "name") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "address") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "phone") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "email") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "id") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[4];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "gender") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[6];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                console.log(txtValue)
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "program") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[7];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "major") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[8];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    if (document.getElementById("filter").value === "extraCurry") {
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[9];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-}
+// function searchFunction() {
+//     var input, filter, table, tr, td, i, txtValue;
+//     input = document.getElementById("search");
+//     filter = input.value.toUpperCase();
+//     table = document.getElementById("student-table");
+//     tr = table.getElementsByTagName("tr");
+//     if (document.getElementById("filter").value === "name") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[0];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "address") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[1];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "phone") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[2];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "email") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[3];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "id") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[4];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "gender") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[6];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 console.log(txtValue)
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "program") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[7];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "major") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[8];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+//     if (document.getElementById("filter").value === "extraCurry") {
+//         for (i = 0; i < tr.length; i++) {
+//             td = tr[i].getElementsByTagName("td")[9];
+//             if (td) {
+//                 txtValue = td.textContent || td.innerText;
+//                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//                     tr[i].style.display = "";
+//                 } else {
+//                     tr[i].style.display = "none";
+//                 }
+//             }
+//         }
+//     }
+// }
 
-var rowsPerPage = 4;
-var currentPage = 1;
+// var rowsPerPage = 4;
+// var currentPage = 1;
 
-// Function to display the rows for the current page
-function displayRowsForPage(pageNumber, rows) {
-    var startIndex = (pageNumber - 1) * rowsPerPage;
-    var endIndex = startIndex + rowsPerPage;
+// // Function to display the rows for the current page
+// function displayRowsForPage(pageNumber, rows) {
+//     var startIndex = (pageNumber - 1) * rowsPerPage;
+//     var endIndex = startIndex + rowsPerPage;
 
-    var rowsToDisplay = rows.slice(startIndex, endIndex);
-    tableBody.innerHTML = '';
+//     var rowsToDisplay = rows.slice(startIndex, endIndex);
+//     tableBody.innerHTML = '';
 
-    // Add the rows to the table body
-    rowsToDisplay.forEach(function (row) {
-        tableBody.appendChild(row);
-    });
-}
+//     // Add the rows to the table body
+//     rowsToDisplay.forEach(function (row) {
+//         tableBody.appendChild(row);
+//     });
+// }
 
-// Function to generate the pagination buttons
-function generatePaginationButtons(rows) {
-    var totalPages = Math.ceil(rows.length / rowsPerPage);
-    var paginationContainer = document.getElementById('pagination-container');
-    paginationContainer.innerHTML = '';
+// // Function to generate the pagination buttons
+// function generatePaginationButtons(rows) {
+//     var totalPages = Math.ceil(rows.length / rowsPerPage);
+//     var paginationContainer = document.getElementById('pagination-container');
+//     paginationContainer.innerHTML = '';
 
-    for (var i = 1; i <= totalPages; i++) {
-        var button = document.createElement('button');
-        button.innerHTML = i;
-        button.addEventListener('click', function (event) {
-            var pageNumber = parseInt(event.target.innerHTML);
-            currentPage = pageNumber;
-            displayRowsForPage(currentPage, rows);
-        });
-        paginationContainer.appendChild(button);
-    }
-}
+//     for (var i = 1; i <= totalPages; i++) {
+//         var button = document.createElement('button');
+//         button.innerHTML = i;
+//         button.addEventListener('click', function (event) {
+//             var pageNumber = parseInt(event.target.innerHTML);
+//             currentPage = pageNumber;
+//             displayRowsForPage(currentPage, rows);
+//         });
+//         paginationContainer.appendChild(button);
+//     }
+// }
 
-// Function to initialize the student table and pagination
-function initializeStudentTable() {
-    var rows = Array.from(document.getElementById('student-table-body').getElementsByTagName('tr'));
-    generatePaginationButtons(rows);
-    displayRowsForPage(currentPage, rows);
-}
+// //Function to initialize the student table and pagination
+// function initializeStudentTable() {
+//     var rows = Array.from(document.getElementById('student-table-body').getElementsByTagName('tr'));
+//     generatePaginationButtons(rows);
+//     displayRowsForPage(currentPage, rows);
+// }
 
 
 // Show and Hide Advance Search
-function showSearchDiv() {
-    document.getElementById('searchDiv').style.display = "block";
-    document.getElementById('showButton').style.display = "none";
-}
+// function showSearchDiv() {
+//     document.getElementById('searchDiv').style.display = "block";
+//     document.getElementById('showButton').style.display = "none";
+// }
 
-function closeSearchDiv() {
-    document.getElementById('searchDiv').style.display = "none";
-    document.getElementById('showButton').style.display = "block";
-}
+// function closeSearchDiv() {
+//     document.getElementById('searchDiv').style.display = "none";
+//     document.getElementById('showButton').style.display = "block";
+// }
 
 document.getElementById("advanceSearch").addEventListener('click', function () {
     majorSearch = document.getElementById("searchMajor");
     searchfilter = majorSearch.value;
 
-    var maleRadio = document.getElementById("maleRadio");
-    var femaleRadio = document.getElementById("femaleRadio");
-    var otherRadio = document.getElementById("otherRadio");
+    programSearch = document.getElementById("searchProgram");
+    searchProgramFilter = programSearch.value;
+
+    var maleRadio = document.getElementById("searchMaleRadio");
+    var femaleRadio = document.getElementById("searchFemaleRadio");
+    var otherRadio = document.getElementById("searchOtherRadio");
 
     var selectedGenderFilter = "";
 
@@ -514,18 +532,25 @@ document.getElementById("advanceSearch").addEventListener('click', function () {
     searchId = document.getElementById("searchId");
     searchIdFilter = searchId.value;
 
+    searchUser = document.getElementById("searchUser");
+    searchUserFilter = searchUser.value;
+
     table = document.getElementById("student-table");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[8];
         td0 = tr[i].getElementsByTagName("td")[6];
         td1 = tr[i].getElementsByTagName("td")[4];
+        td2 = tr[i].getElementsByTagName("td")[7];
+        td3 = tr[i].getElementsByTagName("td")[0];
 
         if (td) {
             txtValue = td.textContent || td.innerText;
-            txtValue0 = td0.textContent || td0.innerText
-            txtValue1 = td1.textContent || td1.innerText
-            if (txtValue.indexOf(searchfilter) > -1 && txtValue0.indexOf(selectedGenderFilter) > -1 && txtValue1.indexOf(searchIdFilter) > -1) {
+            txtValue0 = td0.textContent || td0.innerText;
+            txtValue1 = td1.textContent || td1.innerText;
+            txtValue2 = td2.textContent || td2.innerText;
+            txtValue3 = td3.textContent || td3.innerText;
+            if (txtValue.indexOf(searchfilter) > -1 && txtValue0.indexOf(selectedGenderFilter) > -1 && txtValue1.indexOf(searchIdFilter) > -1 && txtValue2.indexOf(searchProgramFilter) > -1 && txtValue3.indexOf(searchUserFilter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -533,3 +558,7 @@ document.getElementById("advanceSearch").addEventListener('click', function () {
         }
     }
 });
+}
+else {
+    window.location.href = 'log.html';
+}

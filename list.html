@@ -20,13 +20,12 @@
         <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="list.html">Students Info</a></li>
-            <li><a href="#">About Me</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
         </ul>
     </nav>
 
-    <div class="container flex-container" style="margin-top: 10px;">
-        <div class="form-group flex-child">
+    <div class="container flex-container" >
+        <!-- <div class="form-group flex-child">
             <select id="filter" name="filter" style="height: 33px; width: 130px;">
                 <option value="name">Search by Name</option>
                 <option value="address">Search by Address</option>
@@ -40,35 +39,52 @@
             </select>
         </div>
         <input type="text" class="form-control flex-child" id="search" onkeyup="searchFunction()" placeholder="Search"
-            style="width: 150px">
-        <div class="form-group flex-child">
-            <div id="searchDiv" style="display:none;">
-                <div class="flex-container">
-                    <div class="form-group flex-child" style="margin-left: 5px;">
-                        <button class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" onclick="closeSearchDiv()">Close Advanced Search</button>
-                        <select id="searchMajor" name="searchMajor" style="height: 33px; width: 130px;">
-                            <option value="">Search By major</option>
-                            <option value="Computer Science">Computer Science</option>
-                            <option value="Electrical and Electronics Engineering">Electrical and Electronics
-                                Engineering</option>
-                        </select>
+            style="width: 150px"> -->
+        <div class="jumbotron" style="height: 140px; margin-bottom: 0%; padding-top:0% ">
+            <div class="form-group flex-child">
+                <h2>Search<br></h2>
+                <div id="searchDiv">
+                    <div class="flex-container">
+                        <div class="form-group flex-child" style="margin-left: 5px;">
+                            <!-- <button class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" onclick="closeSearchDiv()">Close Advanced Search</button> -->
+                            <select id="searchProgram" name="searchProgram" style="height: 33px;">
+                                <option value="">Search By Program</option>
+                                <option value="Under-graduation">Under-graduation</option>
+                                <option value="Post-graduation">Post-graduation</option>
+                                <option value="Research Assistant">Research Assistant</option>
+                            </select>
+                            <select id="searchMajor" name="searchMajor" style="height: 33px;">
+                                <option value="">Search By Major</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Electrical and Electronics Engineering">Electrical and Electronics
+                                    Engineering</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group flex-child" style="margin-right: 10px; margin-top: 5px;">
+                            <label><input type="radio" name="gender" id="searchMaleRadio" value="Male"
+                                    style="margin-left: 5px;">Male</label>
+                            <label><input type="radio" name="gender" id="searchFemaleRadio" value="Female"
+                                    style="margin-left: 5px;">Female</label>
+                            <label><input type="radio" name="gender" id="searchOtherRadio" value="Other"
+                                    style="margin-left: 5px;">Other</label>
+                        </div>
+
+                        <div class="form-group flex-child">
+                            <input type="number" class="form-control" id="searchId" style="width: 170px;"
+                                placeholder="Search By ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="searchUser"
+                                style="width: 170px; margin-left: 5px; margin-right: 5px;" placeholder="Search By Name">
+                        </div>
+                        <button type="advanceSearch" class="form-group flex-child"
+                            style="height: 33px; background-color:rgb(1, 30, 49);color: white;"
+                            id="advanceSearch">Search</button>
                     </div>
-
-                    <div class="form-group flex-child" style="margin-right: 10px; margin-top: 5px;">
-                        <label><input type="radio" name="gender" id="maleRadio" value="Male" style="margin-left: 5px;">Male</label>
-                        <label><input type="radio" name="gender" id="femaleRadio" value="Female" style="margin-left: 5px;">Female</label>
-                        <label><input type="radio" name="gender" id="otherRadio" value="Other" style="margin-left: 5px;">Other</label>
-                </div>  
-
-                    <div class="form-group flex-child">
-                        <input type="number" class="form-control" id="searchId" style="width: 133px;"placeholder="Search By ID">
-                    </div>
-
-
-                    <button type="advanceSearch" class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" id="advanceSearch">Search</button>
                 </div>
+                <!-- <input type="button" id="showButton" name="searchDiv" value="Advanced Search" style="margin-left: 5px; height: 33px; " onclick="showSearchDiv()" /> -->
             </div>
-            <input type="button" id="showButton" name="searchDiv" value="Advanced Search" style="margin-left: 5px; height: 33px; " onclick="showSearchDiv()" />
         </div>
     </div>
 
@@ -164,7 +180,7 @@
                                 <input type="date" class="form-control" id="endate">
                             </div>
                             <div class="form-group">
-                                <label for="gender" style="margin-bottom: 0;">Select Gender</label>
+                                <label style="margin-bottom: 0;">Select Gender</label>
                                 <div class="radio">
                                     <label><input type="radio" name="gender" id="maleRadio" value="Male">Male</label>
                                 </div>
