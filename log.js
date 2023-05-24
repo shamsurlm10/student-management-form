@@ -38,7 +38,7 @@ function generateJWT(user) {
     console.log(encoded)
 
     var secretKey = 'shamsurlm10';
-    var token = secretKey + '.' + encoded + '.' +secretKey;
+    var token = secretKey + '#' + encoded + '#' + secretKey;
     return token;
   }
 }

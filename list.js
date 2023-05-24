@@ -337,7 +337,6 @@ if (token) {
 
         var rowsToDisplay = data.slice(start, end);
         tableBody.innerHTML = "";
-        console.log(rowsPerPage)
         for (var i = 0; i < rowsToDisplay.length; i++) {
             var student = rowsToDisplay[i];
             var row = document.createElement("tr");
@@ -736,7 +735,6 @@ if (token) {
             td1 = tr[i].getElementsByTagName("td")[4];
             td2 = tr[i].getElementsByTagName("td")[7];
             td3 = tr[i].getElementsByTagName("td")[0];
-
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 txtValue0 = td0.textContent || td0.innerText;
