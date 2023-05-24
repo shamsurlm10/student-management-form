@@ -1,5 +1,4 @@
 var token = localStorage.getItem('jwt');
-
 if (token) {
     document.getElementById("student-form").addEventListener("submit", function (event) {
         event.preventDefault();
@@ -232,10 +231,6 @@ else {
 
 document.getElementById("logout").addEventListener("click", function (event) {
     event.preventDefault();
-
-    // Clear JWT token from local storage
     localStorage.removeItem("jwt");
-
-    // Redirect to the login page or any other appropriate action
     window.location.href = "log.html";
 });

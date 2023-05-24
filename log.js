@@ -31,19 +31,14 @@ document.getElementById("login-form").addEventListener('submit', function(event)
 })
 function generateJWT(user) {
     var payload = {
-      // Include any necessary user information in the payload
-      userId: user.id,
-      username: user.username,
-      // Add additional claims as needed
+      userId: user.password,
+      username: user.email
     };
-  
-    // Encode the payload as Base64
-    var encodedPayload = btoa(JSON.stringify(payload));
-  
-    // Create the JWT token using a secret key (this is a simple example)
-    var secretKey = 'your-secret-key';
-    var token = secretKey + '.' + encodedPayload;
-  
+    var encoded = btoa(JSON.stringify(payload));
+    console.log(encoded)
+
+    var secretKey = 'shamsurlm10';
+    var token = secretKey + '.' + encoded + '.' +secretKey;
     return token;
   }
 }
