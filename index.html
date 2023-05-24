@@ -19,7 +19,7 @@
         <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="list.html">Students Info</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="t&c.html">Terms & Conditions</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right: 80px;">
             <li><a href="log.html" id="logout">Logout</a></li>
@@ -38,7 +38,7 @@
         <form id="student-form">
             <div class="row" style="padding: 10px;">
                 <div class="col-md-6">
-                    <div class="thumbnail">
+                    <div class="thumbnail" style="padding-top: 40px; padding-bottom: 50px;">
                         <div class="form-group">
                             <label for="user">Name:</label>
                             <input type="text" class="form-control" id="user" placeholder="Enter Name">
@@ -119,18 +119,16 @@
                         </div>
 
                         <div class="form-group" style="margin-top: 10px;">
-                            <label for="program">Course/Program selection</label>
-                            <select id="program" name="program">
-                                <option value="">Select an option</option>
+                            <select id="program" name="program" style="width: 350px;">
+                                <option value="">Select program to enroll</option>
                                 <option value="Under-graduation">Under-graduation</option>
                                 <option value="Post-graduation">Post-graduation</option>
                                 <option value="Research Assistant">Research Assistant</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="major">Major selection</label>
-                            <select id="major" name="major">
-                                <option value="">Select an option</option>
+                            <select id="major" name="major" style="width: 350px;">
+                                <option value="">Select Major</option>
                                 <option value="Computer Science">Computer Science</option>
                                 <option value="Electrical and Electronics Engineering">Electrical and Electronics
                                     Engineering</option>
@@ -147,7 +145,7 @@
                         <div class="form-group">
                             <label for="comment">Comment</label>
                             <textarea class="form-control" id="comment" rows="3" placeholder="write..."
-                                style="height: 48px;"></textarea>
+                                style="height: 39px;"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-block btn-primary" id="submit">Submit</button>

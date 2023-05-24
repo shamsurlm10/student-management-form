@@ -57,3 +57,43 @@ ul li a{
     background-color: rgb(1, 36, 49);
     border-color: rgb(1, 36, 49);
 }
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("down-arrow-icon.png") no-repeat;
+    background-position: right center;
+    background-size: 20px;
+    color: #555;
+    background-color: #f9f9f9;
+  }
+  
+  select option {
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #555;
+  }
+  
+  select:hover,
+  select:focus {
+    border-color: #999;
+  }
+  
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 3px #999;
+  }
+  
+  select option:hover {
+    background-color: #e6e6e6;
+  }
+  
+  select option:checked {
+    background-color: #ccc;
+  }
+  

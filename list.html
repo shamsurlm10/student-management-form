@@ -20,7 +20,7 @@
         <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="list.html">Students Info</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="t&c.html">Terms & Conditions</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right: 80px;">
             <li><a href="log.html" id="logout">Logout</a></li>
@@ -28,21 +28,6 @@
     </nav>
 
     <div class="container flex-container">
-        <!-- <div class="form-group flex-child">
-            <select id="filter" name="filter" style="height: 33px; width: 130px;">
-                <option value="name">Search by Name</option>
-                <option value="address">Search by Address</option>
-                <option value="phone">Search by Phone</option>
-                <option value="id">Search by Id</option>
-                <option value="email">Search by Email</option>
-                <option value="gender">Search by Gender</option>
-                <option value="program">Search by Program</option>
-                <option value="major">Search by Major</option>
-                <option value="extraCurry">Search by Extra-curriculum</option>
-            </select>
-        </div>
-        <input type="text" class="form-control flex-child" id="search" onkeyup="searchFunction()" placeholder="Search"
-            style="width: 150px"> -->
         <div class="jumbotron" style="height: 140px; margin-bottom: 0%; padding-top:0% ">
             <div class="form-group flex-child">
                 <h2>Search<br></h2>
@@ -50,7 +35,7 @@
                     <div class="flex-container">
                         <div class="form-group flex-child" style="margin-left: 5px;">
                             <!-- <button class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" onclick="closeSearchDiv()">Close Advanced Search</button> -->
-                            <select id="searchProgram" name="searchProgram" style="height: 33px;">
+                            <select id="searchProgram" name="searchProgram">
                                 <option value="">Search By Program</option>
                                 <option value="Under-graduation">Under-graduation</option>
                                 <option value="Post-graduation">Post-graduation</option>
@@ -59,7 +44,7 @@
                         </div>
                         <div class="form-group flex-child" style="margin-left: 5px;">
                             <!-- <button class="form-group flex-child" style="height: 33px; background-color:rgb(1, 30, 49);color: white;" onclick="closeSearchDiv()">Close Advanced Search</button> -->
-                            <select id="searchMajor" name="searchMajor" style="height: 33px;">
+                            <select id="searchMajor" name="searchMajor">
                                 <option value="">Search By Major</option>
                                 <option value="Computer Science">Computer Science</option>
                                 <option value="Electrical and Electronics Engineering">Electrical and Electronics
@@ -79,15 +64,15 @@
 
 
                         <div class="form-group flex-child">
-                            <input type="number" class="form-control" id="searchId" style="width: 170px;"
+                            <input type="number" class="form-control" id="searchId" style="width: 165px; height: 44px;"
                                 placeholder="Search By ID">
                         </div>
                         <div class="form-group flex-child">
                             <input type="text" class="form-control" id="searchUser"
-                                style="width: 170px; margin-left: 5px; margin-right: 5px;" placeholder="Search By Name">
+                            style="width: 165px; height: 44px; margin-left: 5px; margin-right: 5px;" placeholder="Search By Name">
                         </div>
                         <button type="advanceSearch" class="form-group flex-child"
-                            style="height: 33px; background-color:rgb(1, 30, 49);color: white;"
+                            style="width: 58px; height: 44px; background-color:rgb(1, 30, 49);color: white;"
                             id="advanceSearch">Search</button>
                     </div>
                 </div>
@@ -201,9 +186,7 @@
                             </div>
                         </div>
                         <div class="form-group" style="margin-top: 10px;">
-                            <label for="program">Course/Program selection</label>
                             <select id="program" name="program">
-                                <option value="">Select an option</option>
                                 <option value="Under-graduation">Under-graduation</option>
                                 <option value="Post-graduation">Post-graduation</option>
                                 <option value="Research Assistant">Research Assistant</option>
@@ -221,9 +204,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="major">Major selection</label>
                             <select id="major" name="major">
-                                <option value="">Select an option</option>
                                 <option value="Computer Science">Computer Science</option>
                                 <option value="Electrical and Electronics Engineering">Electrical and
                                     Electronics
