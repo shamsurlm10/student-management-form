@@ -7,7 +7,16 @@
   margin-right: 5px;
 } 
 
+.jumbotron{
+  background-color: rgb(233, 233, 233);
+  margin-top: 1px;
+  padding-top: 1px;
 
+}
+
+.container .jumbotron{
+  padding-left: 40px;
+}
 table {
     border-collapse: collapse;
     border: 4px solid rgb(188, 188, 188);
@@ -17,6 +26,7 @@ table {
     border: 1px solid rgb(188, 188, 188);
     padding: 8px;
     background-color: rgb(255, 255, 255);
+    font-weight: 600;
   }
   th{
     border: 1px solid rgb(255, 255, 255);
@@ -24,5 +34,6 @@ table {
     background-color: rgb(1, 30, 49);
     color: white;
   }
+
 
 

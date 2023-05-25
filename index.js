@@ -167,7 +167,14 @@ if (token) {
             alert("Please fill in the Comment field.");
             return;
         }
+        function uniqId() {
+            var randomNum = Math.random() * 50;
+            randomNum = Math.ceil(randomNum)
+            uniqId = randomNum + Date.now().toString(36);
+            return uniqId;
+        }
         var student = {
+            id: uniqId(),
             name: name,
             address: address,
             city: city,

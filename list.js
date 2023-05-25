@@ -33,6 +33,8 @@ if (token) {
             // Create update and delete buttons
             var updateButtonCell = document.createElement("td");
             var updateButton = document.createElement("button");
+            updateButton.classList.add('btn', 'btn-success');
+            updateButton.style.padding ='5px'
             updateButton.textContent = "Update";
             updateButton.addEventListener("click", function () {
                 var row = this.parentNode.parentNode;
@@ -316,6 +318,8 @@ if (token) {
 
             var deleteButtonCell = document.createElement("td");
             var deleteButton = document.createElement("button");
+            deleteButton.classList.add('btn', 'btn-danger');
+            deleteButton.style.padding ='5px'
             deleteButton.textContent = "Delete";
             deleteButton.addEventListener("click", function () {
                 var row = this.parentNode.parentNode;
@@ -347,6 +351,7 @@ if (token) {
 
         for (var i = 1; i <= totalPages; i++) {
             var button = document.createElement('button');
+            button.classList.add('btn', 'btn-secondary');
             button.innerHTML = i;
             button.addEventListener('click', function (event) {
                 var pageNumber = parseInt(event.target.innerHTML);
