@@ -24,6 +24,7 @@ document.getElementById("login-form").addEventListener('submit', function(event)
     if (validlogin) {
         var token = generateJWT(user);
         localStorage.setItem('jwt', token);
+        localStorage.setItem('userName', user.name);
         window.location.href = 'index.html';
       } else {
         alert("Invalid email or password");
@@ -31,14 +32,10 @@ document.getElementById("login-form").addEventListener('submit', function(event)
 })
 function generateJWT(user) {
     var payload = {
-      userId: user.password,
-      username: user.email
+      username: user.name
     };
     var encoded = btoa(JSON.stringify(payload));
-    console.log(encoded)
-
-    var secretKey = 'shamsurlm10';
-    var token = secretKey + '#' + encoded + '#' + secretKey;
+    var token = encoded;
     return token;
   }
 }

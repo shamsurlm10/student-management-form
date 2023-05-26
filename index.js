@@ -1,4 +1,5 @@
 var token = localStorage.getItem('jwt');
+var userNameId = localStorage.getItem('userName');
 if (token) {
     document.getElementById("student-form").addEventListener("submit", function (event) {
         event.preventDefault();
@@ -167,14 +168,14 @@ if (token) {
             alert("Please fill in the Comment field.");
             return;
         }
-        function uniqId() {
-            var randomNum = Math.random() * 50;
-            randomNum = Math.ceil(randomNum)
-            uniqId = randomNum + Date.now().toString(36);
-            return uniqId;
-        }
+        // function uniqId() {
+        //     var randomNum = Math.random() * 50;
+        //     randomNum = Math.ceil(randomNum)
+        //     uniqId = randomNum + Date.now().toString(36);
+        //     return uniqId;
+        // }
         var student = {
-            id: uniqId(),
+            id: userNameId,
             name: name,
             address: address,
             city: city,

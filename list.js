@@ -1,4 +1,5 @@
 var token = localStorage.getItem('jwt');
+var userNameId = localStorage.getItem('userName');
 
 if (token) {
     var data = JSON.parse(localStorage.getItem("studentData"));
@@ -17,14 +18,15 @@ if (token) {
     function displayRowsForPage(pageNumber, data) {
         var start = (pageNumber - 1) * rowsPerPage;
         var end = start + rowsPerPage;
-
+        // Filter data according to username
+        data = data.filter(student=>student.id === userNameId)
         var rowsToDisplay = data.slice(start, end);
         tableBody.innerHTML = "";
         for (var i = 0; i < rowsToDisplay.length; i++) {
             var student = rowsToDisplay[i];
             var row = document.createElement("tr");
             for (var key in student) {
-                if (student.hasOwnProperty(key) && key !== 'city' && key !== 'country' && key !== 'parent' && key !== 'birthDate' && key !== 'selectedMarital' && key !== 'comment') {
+                if (student.hasOwnProperty(key) && key!=='id' && key !== 'city' && key !== 'country' && key !== 'parent' && key !== 'birthDate' && key !== 'selectedMarital' && key !== 'comment') {
                     var cell = document.createElement("td");
                     cell.textContent = student[key];
                     row.appendChild(cell);
@@ -351,6 +353,7 @@ if (token) {
 
         for (var i = 1; i <= totalPages; i++) {
             var button = document.createElement('button');
+            button.style.margin = '5px'
             button.classList.add('btn', 'btn-secondary');
             button.innerHTML = i;
             button.addEventListener('click', function (event) {

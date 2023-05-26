@@ -1,5 +1,6 @@
 document.getElementById("register-form").addEventListener("submit", function(event){
     event.preventDefault();
+    var flag = true
     var name = document.getElementById("username").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -59,13 +60,24 @@ document.getElementById("register-form").addEventListener("submit", function(eve
         userData = [];
     } else {
         userData = JSON.parse(userData);
+        userData.forEach(user=>{
+            if(user.name === name  || user.email === email){
+                flag = false
+            }
+        })
     }
     function saveUserData(user) {
         userData.push(user);
         localStorage.setItem("userData", JSON.stringify(userData));
     }
-    saveUserData(user);
-    window.location.reload();
-    alert("Registration Successfull. Now Login");
-    window.location.href = 'log.html';
+    if(flag){
+        saveUserData(user);
+        window.location.reload();
+        alert("Registration Successful. Now Login");
+        window.location.href = 'log.html';
+    }
+    else{
+        alert("Username/Email Already Exist!!!");
+        window.location.href = 'reg.html';
+    }
 });
