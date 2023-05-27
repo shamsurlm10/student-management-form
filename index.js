@@ -1,3 +1,9 @@
+document.getElementById("logout").addEventListener("click", function (event) {
+    event.preventDefault();
+    localStorage.removeItem("jwt");
+    window.location.href = "log.html";
+    window.location.reload();
+});
 var token = localStorage.getItem('jwt');
 var userNameId = localStorage.getItem('userName');
 if (token) {
@@ -236,9 +242,3 @@ if (token) {
 else {
     window.location.href = 'log.html';
 }
-
-document.getElementById("logout").addEventListener("click", function (event) {
-    event.preventDefault();
-    localStorage.removeItem("jwt");
-    window.location.href = "log.html";
-});
