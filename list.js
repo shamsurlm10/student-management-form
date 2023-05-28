@@ -3,14 +3,15 @@ var userNameId = localStorage.getItem('userName');
 
 if (token) {
     var data = JSON.parse(localStorage.getItem("studentData"));
-
     var tableBody = document.getElementById("student-table-body");
     var tableSearchBody = document.getElementById("student-table-search-body");
 
     // Call the initialization function when the page loads
-    window.onload = initializeStudentTable;
+    window.onload = function () {
+        data = JSON.parse(localStorage.getItem("studentData")); // Update the 'data' variable
+        initializeStudentTable();
+    };
     // }
-
     var rowsPerPage = 4;
     var currentPage = 1;
 

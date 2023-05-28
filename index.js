@@ -9,6 +9,7 @@ var userNameId = localStorage.getItem('userName');
 if (token) {
     document.getElementById("student-form").addEventListener("submit", function (event) {
         event.preventDefault();
+        window.location.href = "list.html";
         var name = document.getElementById("user").value;
         var address = document.getElementById("address").value;
         var city = document.getElementById("city").value;
@@ -152,7 +153,7 @@ if (token) {
 
         if (selectedGender === "") {
             alert("Please select a gender");
-            return
+            return;
         }
         if (selectedMarital === "") {
             alert("Please select a marital status");
