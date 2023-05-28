@@ -1,3 +1,9 @@
+document.getElementById("logout").addEventListener("click", function (event) {
+    event.preventDefault();
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("userName");
+    window.location.href = "log.html";
+});
 var token = localStorage.getItem('jwt');
 var userNameId = localStorage.getItem('userName');
 
@@ -42,7 +48,9 @@ if (token) {
             updateButton.addEventListener("click", function () {
                 var row = this.parentNode.parentNode;
                 var rowIndex = Array.from(tableBody.children).indexOf(row);
+                console.log(rowIndex)
                 var adjustedIndex = rowIndex + (currentPage - 1) * rowsPerPage;
+                console.log(adjustedIndex)
                 var name = document.getElementById("user");
                 var address = document.getElementById("address");
                 var city = document.getElementById("city");
@@ -281,6 +289,7 @@ if (token) {
                         return;
                     }
                     var student = {
+                        id: userNameId,
                         name: name,
                         address: address,
                         city: city,
@@ -305,9 +314,17 @@ if (token) {
                         studentData = JSON.parse(studentData);
                     }
                     function saveStudentData(student) {
-                        studentData.splice(adjustedIndex, 1, student);
+                        studentData=studentData.map(std=>{
+                            if(std.email === email){
+                                return student
+                            }
+                            else{
+                                return std
+                            }
+                        })
                         localStorage.setItem("studentData", JSON.stringify(studentData));
                     }
+
                     saveStudentData(student);
 
                     window.location.reload();

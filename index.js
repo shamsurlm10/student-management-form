@@ -1,8 +1,8 @@
 document.getElementById("logout").addEventListener("click", function (event) {
     event.preventDefault();
     localStorage.removeItem("jwt");
+    localStorage.removeItem("userName");
     window.location.href = "log.html";
-    window.location.reload();
 });
 var token = localStorage.getItem('jwt');
 var userNameId = localStorage.getItem('userName');
