@@ -1,36 +1,48 @@
 var data = JSON.parse(localStorage.getItem('userData'))
-if(data){
-document.getElementById("login-form").addEventListener('submit', function(event){
+if (data) {
+  document.getElementById("login-form").addEventListener('submit', function (event) {
     event.preventDefault();
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     if (email === "") {
-        alert("Please fill in the Email field.");
-        return;
+      alert("Please fill in the Email field.");
+      return;
     }
     if (password === "") {
-        alert("Please fill in the password field.");
-        return;
+      alert("Please fill in the password field.");
+      return;
     }
-    var validlogin = false;
+    var validloginEmail = false;
+    var validloginPassword = false;
+    var user;
+
     for (var i = 0; i < data.length; i++) {
-        var user = data[i];
-        if(user.email === email && user.password ===password){
-            var validlogin = true;
-            user = data[i];
-            break;
-        }
-    }
-    if (validlogin) {
-        var token = generateJWT(user);
-        localStorage.setItem('jwt', token);
-        localStorage.setItem('userName', user.name);
-        window.location.href = 'index.html';
-      } else {
-        alert("Invalid email or password");
+      user = data[i];
+      if (user.email === email) {
+        validloginEmail = true;
       }
-})
-function generateJWT(user) {
+      if (user.password === password) {
+        validloginPassword = true;
+      }
+    }
+
+    if (validloginEmail && validloginPassword) {
+      var token = generateJWT(user);
+      localStorage.setItem('jwt', token);
+      localStorage.setItem('userName', user.name);
+      window.location.href = 'index.html';
+    } else if (!validloginEmail && !validloginPassword) {
+      alert("Invalid email and password");
+    } else if (!validloginEmail) {
+      alert("Invalid email");
+    } else {
+      alert("Invalid password");
+    }
+
+
+
+  })
+  function generateJWT(user) {
     var payload = {
       username: user.name
     };
@@ -39,6 +51,6 @@ function generateJWT(user) {
     return token;
   }
 }
-else{
-    alert('No user found. Create a new user');
+else {
+  alert('No user found. Create a new user');
 }

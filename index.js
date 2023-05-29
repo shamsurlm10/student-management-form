@@ -9,7 +9,6 @@ var userNameId = localStorage.getItem('userName');
 if (token) {
     document.getElementById("student-form").addEventListener("submit", function (event) {
         event.preventDefault();
-        window.location.href = "list.html";
         var name = document.getElementById("user").value;
         var address = document.getElementById("address").value;
         var city = document.getElementById("city").value;
@@ -175,6 +174,7 @@ if (token) {
             alert("Please fill in the Comment field.");
             return;
         }
+
         // function uniqId() {
         //     var randomNum = Math.random() * 50;
         //     randomNum = Math.ceil(randomNum)
